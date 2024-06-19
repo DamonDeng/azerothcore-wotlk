@@ -358,7 +358,28 @@ void WorldSession::HandleMessagechatOpcode(WorldPacket& recvData)
                 }
 
                 if (type == CHAT_MSG_SAY)
-                    sender->Say(msg, Language(lang));
+                {
+                    
+                        Creature* target = ChatHandler(this).getSelectedCreature();
+
+                        // Check whether there is any target selected:
+                        if (target == nullptr)
+                        {
+                            // if no target selected, conduct normal Say command.
+                            sender->Say(msg, Language(lang));
+                        }
+                        else
+                        {
+                            // if there is target selected:
+                            
+
+                            sender->Say(msg, Language(lang));
+
+                            target->Say("Ha, let me see... 让我想想。。。, and let me think again.", Language(lang));
+
+                        }
+
+                    }
                 else if (type == CHAT_MSG_EMOTE)
                     sender->TextEmote(msg);
                 else if (type == CHAT_MSG_YELL)
