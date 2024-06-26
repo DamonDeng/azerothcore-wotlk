@@ -113,6 +113,9 @@ if(NOT WITHOUT_GIT)
     find_package(Git)
 endif()
 
+
+
+
 # Find revision ID and hash of the sourcetree
 include(src/cmake/genrev.cmake)
 

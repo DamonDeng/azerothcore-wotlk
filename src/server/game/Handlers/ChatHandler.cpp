@@ -360,24 +360,31 @@ void WorldSession::HandleMessagechatOpcode(WorldPacket& recvData)
                 if (type == CHAT_MSG_SAY)
                 {
                     
-                        Creature* target = ChatHandler(this).getSelectedCreature();
+                    sender->Say(msg, Language(lang));
 
-                        // Check whether there is any target selected:
-                        if (target == nullptr)
-                        {
-                            // if no target selected, conduct normal Say command.
-                            sender->Say(msg, Language(lang));
-                        }
-                        else
-                        {
-                            // if there is target selected:
+                        // Creature* target = ChatHandler(this).getSelectedCreature();
+
+                        // // Check whether there is any target selected:
+                        // if (target == nullptr)
+                        // {
+                        //     // if no target selected, conduct normal Say command.
+                        //     sender->Say(msg, Language(lang));
+                        // }
+                        // else
+                        // {
+                        //     // if there is target selected:
                             
 
-                            sender->Say(msg, Language(lang));
+                        //     sender->Say(msg, Language(lang));
 
-                            target->Say("Ha, let me see... 让我想想。。。, and let me think again.", Language(lang));
+                        //     // check target's name and detect whether it is a NPC in our list:
 
-                        }
+                        //     std::string target_name = target->GetName();
+
+                        //     target->Say("Ha, let me see... 让我想想。。。, and let me think again.", Language(lang));
+                        //     target->Say("And, my name is: " + target_name + ".", Language(lang));
+
+                        // }
 
                     }
                 else if (type == CHAT_MSG_EMOTE)
